@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Ogawa | Authentic Japanese Ramen in Ascot Vale, Melbourne</title>
+    <meta name="description" content="Authentic Japanese ramen in Ascot Vale, Melbourne. Rich tonkotsu broth, perfectly cooked noodles. Open evenings from 5pm. Dine-in, pickup & delivery.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #F5EED5;
+            --cream-light: #FFFBEB;
+            --orange: #E67E3A;
+            --orange-dark: #D96B28;
+            --orange-light: #F5A962;
+            --charcoal: #5C4A3A;
+            --charcoal-light: #8B7355;
+            --text-orange: #D96B28;
+            --white: #FFFFFF;
+            --shadow: rgba(214, 107, 40, 0.15);
+        }
+
+        body {
+            font-family: 'Cousine', 'Courier New', monospace;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Courier New', 'Courier', monospace;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: var(--orange);
+        }
+        
+        h4 {
+            font-family: 'Courier New', 'Courier', monospace;
+            color: var(--orange);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(245, 238, 213, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--orange-light);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Courier New', 'Courier', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--orange);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--orange);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 85vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -10%;
+            width: 40%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(230, 126, 58, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            padding-left: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            letter-spacing: 0.15em;
+            text-transform: lowercase;
+            color: var(--orange);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--orange);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--charcoal-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+            padding: 1.5rem 0;
+            border-top: 2px solid rgba(230, 126, 58, 0.3);
+            border-bottom: 2px solid rgba(230, 126, 58, 0.3);
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--orange);
+            font-family: 'Courier New', 'Courier', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            letter-spacing: 0.05em;
+            text-transform: lowercase;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cousine', monospace;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: var(--cream-light);
+        }
+
+        .btn-primary:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(214, 107, 40, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+        }
+
+        .btn-secondary:hover {
+            background: var(--orange);
+            color: var(--cream-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1.2s ease-out 0.3s backwards;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 20px 60px rgba(42, 40, 38, 0.15);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            background: rgba(245, 243, 238, 0.95);
+            padding: 1.5rem 2rem;
+            max-width: 300px;
+            backdrop-filter: blur(10px);
+        }
+
+        .image-overlay-text {
+            font-style: italic;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Reviews Section */
+        .reviews-preview {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--orange-dark);
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--cream-light);
+            padding: 2.5rem;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(214, 107, 40, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--orange);
+            border-left: 2px solid var(--orange-light);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(214, 107, 40, 0.2);
+        }
+
+        .review-stars {
+            color: var(--orange);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .review-author {
+            font-size: 0.9rem;
+            color: var(--orange-dark);
+            font-weight: 700;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: var(--cream-light);
+            padding: 6rem 2rem;
+            border-top: 3px solid var(--orange);
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .menu-intro p {
+            color: var(--charcoal-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .menu-categories {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .menu-category h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--orange);
+            position: relative;
+            padding-bottom: 1rem;
+            text-transform: lowercase;
+        }
+
+        .menu-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--orange);
+        }
+
+        .menu-items {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .menu-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed rgba(230, 126, 58, 0.3);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--orange);
+            text-transform: lowercase;
+        }
+
+        .item-description {
+            color: var(--charcoal-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--orange-dark);
+            font-family: 'Cousine', monospace;
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 2px;
+            box-shadow: 0 20px 60px rgba(42, 40, 38, 0.15);
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            color: var(--charcoal-light);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-highlight {
+            background: var(--cream-light);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--orange);
+            border-top: 1px solid var(--orange-light);
+        }
+
+        .about-highlight p {
+            font-style: italic;
+            color: var(--charcoal);
+            margin: 0;
+        }
+
+        /* Visit Section */
+        .visit-section {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 6rem 2rem;
+            border-top: 4px solid var(--orange);
+        }
+
+        .visit-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .visit-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--orange-light);
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .info-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--orange-light);
+            font-weight: 700;
+            text-transform: lowercase;
+        }
+
+        .info-item p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--cream);
+        }
+
+        .info-item a {
+            color: var(--orange-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 700;
+        }
+
+        .info-item a:hover {
+            color: var(--cream-light);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed rgba(230, 126, 58, 0.3);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .map-container {
+            background: var(--cream);
+            height: 100%;
+            min-height: 400px;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--orange);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #F5EED5 0%, #E8DFC0 100%);
+            color: var(--charcoal);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 3rem 2rem 2rem;
+            border-top: 2px solid var(--orange);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--orange-light);
+        }
+
+        .footer-brand p {
+            color: var(--cream);
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--orange-light);
+            font-weight: 700;
+            text-transform: lowercase;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            display: block;
+            padding: 0.4rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px dashed rgba(230, 126, 58, 0.3);
+            color: var(--cream);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(245, 238, 213, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 2px solid var(--orange-light);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(7px, 7px);
+            }
+
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                gap: 3rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-content {
+                padding-left: 0;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .hero-image img {
+                height: 400px;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .visit-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(230, 126, 58, 0.02) 0px,
+                    transparent 1px,
+                    transparent 2px,
+                    rgba(230, 126, 58, 0.02) 3px
+                );
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        /* Decorative swirl elements */
+        .decorative-swirl {
+            position: absolute;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        
+        .decorative-swirl img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTM2IiBoZWlnaHQ9IjcyIiB2aWV3Qm94PSIwIDAgNTM2IDcyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMjkuNDI2MiA3MS4xMjkyQzI2LjY1MTYgNzEuNDA2MSAyMi4zNTIxIDcxLjAzNTQgMTkuNzY2MyA3MC4yOTYyQzE3LjIwMzMgNjkuNTYzNSAxMy4xNTMzIDY3LjY2OTYgMTAuNzY2MyA2Ni4wODc1QzcuNjIxMDEgNjQuMDAyOCA1LjUxMjMgNjEuNDIxNSAzLjEwNjQ4IDU2LjcxMDlDLTAuMDM4NTc2NiA1MC41NTI5IC0wLjE5NjQyNyA0OS43MzczIDAuMTA2NDc3IDQxLjIxMDlDMC4zNjgzMjYgMzMuODQwMSAwLjkxODg3NiAzMS4yMTUyIDMuMTQ3NzYgMjYuNzEwOUM0LjY0NDYyIDIzLjY4NTkgOC4xNTA0NSAxOC44NDY3IDEwLjkzODUgMTUuOTU3MUMxMy43MjY2IDEzLjA2NzUgMTguMTI2OSA5LjY0MTYxIDIwLjcxNjkgOC4zNDQwMUMyMy4zMDcgNy4wNDY0MSAyNy45MDEyIDUuMzg2MTIgMzAuOTI2MiA0LjY1NDQ3QzMzLjk1MTIgMy45MjI4MyAzOS44OTA3IDMuMjk4NzEgNDQuMTI1MSAzLjI2NzU1QzQ5LjE4NjcgMy4yMzAzIDUyLjI2OTggMy42NTczIDUzLjEyNTEgNC41MTQwMkM1NC4wMjc2IDUuNDE3OTQgNTQuMzYwOCA4LjQzNjU5IDU0LjIxMjggMTQuMzY3NEM1NC4wOTU1IDE5LjA3MDEgNTMuNDc3OSAyMy41NDYyIDUyLjg0MDQgMjQuMzE0M0M1Mi4xMDg4IDI1LjE5NTggNDkuNjc5NyAyNS43MTA5IDQ2LjI1NDEgMjUuNzEwOUM0My4yNjkxIDI1LjcxMDkgMzkuNTc3OSAyNi4zNTY4IDM4LjA1MTQgMjcuMTQ2MUMzNi41MjQ5IDI3LjkzNTUgMzMuNjIyMiAzMC40MTE4IDMxLjYwMTEgMzIuNjQ5QzI5LjQxNDcgMzUuMDY5MSAyNy45MjYyIDM3LjczODEgMjcuOTI2MiAzOS4yMzg1QzI3LjkyNjIgNDEuMDIxNCAyOC42NzMyIDQyLjA0NDQgMzAuNDc1NSA0Mi43Mjk2QzMyLjEyMTEgNDMuMzU1MyAzNC41MTM3IDQzLjM1NTIgMzcuMjI1NSA0Mi43MjkzQzM5LjUzNTkgNDIuMTk2MSA0My40NTEyIDQxLjc1NTcgNDUuOTI2MiA0MS43NTA2QzQ4LjQwMTIgNDEuNzQ1NiA1MC45NjA2IDQyLjA4MTMgNTEuNjEzNiA0Mi40OTY2QzUyLjI2NjcgNDIuOTExOCA1My4yNzkyIDQ0LjUwOTIgNTMuODYzNiA0Ni4wNDYzQzU0LjQ0ODEgNDcuNTgzNCA1NC45MjYyIDUxLjAyMTggNTQuOTI2MiA1My42ODcxQzU0LjkyNjIgNTcuOTI0MSA1NC41MTc4IDU4Ljg3ODQgNTEuNjc2MiA2MS4yODA3QzQ5Ljg4ODcgNjIuNzkxOSA0NS4yNzYyIDY1LjUxMzcgNDEuNDI2MiA2Ny4zMjkyQzM3LjU3NjIgNjkuMTQ0NiAzMi4xNzYyIDcwLjg1NDYgMjkuNDI2MiA3MS4xMjkyWk0xMDQuMzg2IDY4LjcxMDlDOTUuNDMxNyA2OC43MTA5IDk0LjkzOTIgNjguNTk5MyA5NC40NTkgNjYuNDYwOUM5NC4xODExIDY1LjIyMzQgOTMuODM1IDYyLjE4NTkgOTMuNjg5OSA1OS43MTA5QzkzLjQ0NzQgNTUuNTcyMSA5My4xOTU3IDU1LjE4NDUgOTAuNTU0NCA1NC44ODI3Qzg4Ljk3NDkgNTQuNzAyMiA4Ny4xNzQ5IDU1LjA1NjggODYuNTU0NCA1NS42NzA2Qzg1LjkzMzkgNTYuMjg0NCA4NC45Njc1IDU5LjEzMjEgODQuNDA3IDYxLjk5ODhDODMuMzg3NyA2Ny4yMTA5IDgzLjM4NzcgNjcuMjEwOSA3NC4xNCA2Ny40OTg2QzY2LjM0NjEgNjcuNzQxMiA2NC43OTQyIDY3LjUzMDQgNjQuMjY3NSA2Ni4xNTc5QzYzLjkyMzggNjUuMjYyMiA2NC4zNTU5IDYxLjUzMjcgNjUuMjI3NyA1Ny44NzAxQzY2LjA5OTUgNTQuMjA3NSA2Ny4wODA0IDQ4LjI4NTkgNjcuNDA3NSA0NC43MTA5QzY3LjczNDYgNDEuMTM1OSA2OC42ODY4IDM0LjE2MDkgNjkuNTIzNiAyOS4yMTA5QzcwLjM2MDMgMjQuMjYwOSA3MS41ODA3IDE2Ljg0MDcgNzIuMjM1NiAxMi43MjE1QzczLjQyNjIgNS4yMzIxNSA3My40MjYyIDUuMjMyMTUgNzguNDI2MiA0LjU3NzY5QzgxLjE3NjIgNC4yMTc3NCA4OC41MDM1IDMuNjYwMTUgOTQuNzA5MiAzLjMzODU5QzEwNS45OTIgMi43NTM5NSAxMDUuOTkyIDIuNzUzOTUgMTA3LjAxNyA1LjQ1MDk2QzEwNy41ODEgNi45MzQzMiAxMDguNjkzIDEzLjExMjEgMTA5LjQ4NyAxOS4xNzk0QzExMC4yODEgMjUuMjQ2NyAxMTEuODM4IDM4LjQ1MjUgMTEyLjk0NyA0OC41MjU3QzExNC4wNTcgNTguNTk4OCAxMTQuNzA0IDY3LjI2MTMgMTE0LjM4NiA2Ny43NzU3QzExNC4wNjggNjguMjkgMTA5LjU2OCA2OC43MTA5IDEwNC4zODYgNjguNzEwOVpNOTAuMjExNiAzMC41MjU4QzkyLjEyMyAzMC4yNTQgOTIuNDI2MiAyOS41OTQ4IDkyLjQyNjIgMjUuNzEwOUM5Mi40MjYyIDIxLjgyNyA5Mi4xMjMgMjEuMTY3OCA5MC4yMTE2IDIwLjg5NkM4OC41NDA3IDIwLjY1ODQgODcuODM4OCAyMS4yMTA4IDg3LjM1MzEgMjMuMTQ2Qzg2Ljk5OTEgMjQuNTU2NyA4Ni45OTkxIDI2Ljg2NTEgODcuMzUzMSAyOC4yNzU4Qzg3LjgzODggMzAuMjEwOSA4OC41NDA3IDMwLjc2MzQgOTAuMjExNiAzMC41MjU4Wk0yMDkuNDg1IDY4LjYyNDlDMjA3LjgwMyA2OC41Nzc2IDIwNS4yMTggNjguMTc0MyAyMDMuNzQxIDY3LjcyODZDMjAyLjI2NCA2Ny4yODMgMTk3LjQxMSA2Ni43MDY1IDE5Mi45NTcgNjYuNDQ3NkMxODguNTAzIDY2LjE4ODYgMTg0LjYxNSA2NS43MzM1IDE4NC4zMTggNjUuNDM2MUMxODQuMDIxIDY1LjEzODcgMTgzLjU0MiA1MC45NTc0IDE4My4yNTUgMzMuOTIyMkMxODIuODY1IDEwLjgzMTcgMTgzLjAzIDIuNzY0NiAxODMuOTA0IDIuMjI0NTJDMTg0LjU0OSAxLjgyNjA3IDE5Mi40MTcgMS4yNTc2MSAyMDEuMzg4IDAuOTYxMjYyQzIxNy4xODUgMC40Mzk0NzYgMjE3LjcyIDAuNDg3MTIyIDIxOC4zNSAyLjQ2OTU3QzIxOC43MDcgMy41OTU0OCAyMTkuMDMgNy4wNjM1IDIxOS4wNjcgMTAuMTc2M0MyMTkuMTA0IDEzLjI4OTEgMjE4LjgyNiAxNi4xNDUzIDIxOC40NDkgMTYuNTIzNEMyMTguMDczIDE2LjkwMTUgMjE0Ljc2MyAxNy40MzU5IDIxMS4wOTUgMTcuNzEwOUMyMDQuNzgyIDE4LjE4NDIgMjA0LjQyNiAxOC4zNDQxIDIwNC40MjYgMjAuNzEwOUMyMDQuNDI2IDIzLjA0MzkgMjA0Ljg1NCAyMy4yNTgxIDIxMC44MzMgMjMuOTE3NEMyMTQuMzU2IDI0LjMwNiAyMTcuNjQzIDI1LjAyNzkgMjE4LjEzNyAyNS41MjE3QzIxOC42MzEgMjYuMDE1NCAyMTguODk4IDI5LjA3MjUgMjE4LjczIDMyLjMxNTFDMjE4LjQyNiAzOC4yMTA5IDIxOC40MjYgMzguMjEwOSAyMTEuNzUgMzkuMjEwOUMyMDguMDc4IDM5Ljc2MDkgMjA0Ljc3NCA0MC41MTQ1IDIwNC40MDkgNDAuODg1NUMyMDQuMDQzIDQxLjI1NjYgMjA0LjAyIDQyLjQzMDMgMjA0LjM1NyA0My40OTM3QzIwNC42OTUgNDQuNTU3MiAyMDYuNjQ4IDQ2LjEyOCAyMDguNjk5IDQ2Ljk4NDNDMjEwLjc0OSA0Ny44NDA3IDIxMy4xNSA0OC43NjU5IDIxNC4wMzUgNDkuMDQwNEMyMTUuMDA0IDQ5LjM0MTEgMjE1LjkwMyA1MS4xNjM1IDIxNi4yOTcgNTMuNjI1MkMyMTYuNjU2IDU1Ljg3MjMgMjE2LjY2NiA1OS42MjM0IDIxNi4zMTkgNjEuOTYwOUMyMTUuOTcyIDY0LjI5ODQgMjE0Ljk4MSA2Ni43NzM0IDIxNC4xMTYgNjcuNDYwOUMyMTMuMjUyIDY4LjE0ODQgMjExLjE2NyA2OC42NzIyIDIwOS40ODUgNjguNjI0OVpNMjYyLjc3NyA2OC4xMzk4QzI1OS4yODQgNjguNDE3NyAyNTQuOTQ2IDY4LjE5MjQgMjUzLjEzNiA2Ny42MzkxQzI1MS4zMjcgNjcuMDg1OCAyNDguNTY1IDY1Ljg1MzggMjQ2Ljk5OSA2NC45MDEzQzI0NS40MzMgNjMuOTQ4OSAyNDIuNTY0IDYxLjI3IDI0MC42MjUgNTguOTQ4M0MyMzguNjg1IDU2LjYyNjYgMjM2LjMyNiA1Mi43MDYzIDIzNS4zODMgNTAuMjM2NUMyMzQuMDEzIDQ2LjY0ODggMjMzLjc2MyA0My41ODEgMjM0LjE0IDM0Ljk3ODRDMjM0LjUwNiAyNi42MTk4IDIzNS4xMDcgMjMuMTczNyAyMzYuODI2IDE5LjU3NDhDMjM4LjA0MyAxNy4wMjQ5IDI0MC41NTUgMTMuMTY4MyAyNDIuNDA3IDExLjAwNDZDMjQ0LjI1OSA4Ljg0MDg4IDI0OC42MjEgNS41MzE3IDI1Mi4xIDMuNjUwODZDMjU4LjA5NCAwLjQxMDc5NiAyNTguOTUxIDAuMjMwNjMyIDI2OC40MjYgMC4yMjEwMjRDMjc3Ljc1NiAwLjIxMTUyNCAyNzguNzg5IDAuNDE2NjU0IDI4My44NDEgMy4yODIwN0MyODguNDI5IDUuODg0ODQgMjg5Ljc2NCA3LjM1MjA5IDI5Mi41OTIgMTIuOTAyMkMyOTUuMTIgMTcuODYxNyAyOTYuMDgzIDIxLjI2NzkgMjk2LjU2MiAyNi45MzYyQzI5Ni45NjIgMzEuNjU2OCAyOTYuNzMxIDM2LjQxMzYgMjk1Ljk0IDM5LjgxNkMyOTUuMjQ5IDQyLjc4MzIgMjkzLjUyNSA0Ny4zNzk0IDI5Mi4xMDkgNTAuMDI5N0MyOTAuNjkyIDUyLjY4MDEgMjg4LjAyNSA1Ni4xNzI4IDI4Ni4xODIgNTcuNzkxM0MyODQuMzM4IDU5LjQwOTkgMjc5Ljc0NyA2Mi4yODY3IDI3NS45NzkgNjQuMTg0M0MyNzEuMDkyIDY2LjY0NTYgMjY3LjMwNyA2Ny43Nzk0IDI2Mi43NzcgNjguMTM5OFpNMjYyLjIwMSA0Mi43MTA5QzI2My4yNiA0Mi43MTA5IDI2NS42NTYgNDEuMTgwOSAyNjcuNTI2IDM5LjMxMDlDMjcwLjA1MSAzNi43ODY0IDI3MC45MjYgMzUuMDQxMSAyNzAuOTI2IDMyLjUzMzRDMjcwLjkyNiAzMC42NzU4IDI3MC4yMjYgMjguMTU1OCAyNjkuMzcgMjYuOTMzNEMyNjguNDY0IDI1LjY0MDkgMjY2Ljc2MyAyNC43MTA5IDI2NS4zMDQgMjQuNzEwOUMyNjMuOTI0IDI0LjcxMDkgMjYxLjkyOSAyNS4xNzQyIDI2MC44NzEgMjUuNzQwNUMyNTkuODEzIDI2LjMwNjggMjU4LjI2NyAyOC4wODQ1IDI1Ny40MzcgMjkuNjkwOUMyNTYuNjA2IDMxLjI5NzMgMjU1LjkyNiAzMy44NDI0IDI1NS45MjYgMzUuMzQ2OEMyNTUuOTI2IDM2Ljg1MTEgMjU2LjkwNSAzOS4xMjM1IDI1OC4xMDEgNDAuMzk2NEMyNTkuMjk2IDQxLjY2OTQgMjYxLjE0MSA0Mi43MTA5IDI2Mi4yMDEgNDIuNzEwOVpNMTM3LjQzNyA2Ny43MTA5QzEyNi4xMjggNjcuNzEwOSAxMjYuMTI4IDY3LjcxMDkgMTI1Ljc0NCA2Mi45NjA5QzEyNS41MzMgNjAuMzQ4NCAxMjUuNjY4IDUzLjAzNTkgMTI2LjA0MyA0Ni43MTA5QzEyNi40MTggNDAuMzg1OSAxMjcuMjUyIDI4LjQ2MDkgMTI3Ljg5NiAyMC4yMTA5QzEyOC43MjIgOS42MjY5MiAxMjkuNDgxIDQuODg4ODkgMTMwLjQ3NCA0LjExNzE2QzEzMS4yOTMgMy40ODA1MSAxMzkuMTU5IDIuNzczMzUgMTQ5LjI5NyAyLjQyNTAxQzE1OC44NzUgMi4wOTU4NyAxNjcuOTk4IDIuMTY5NTUgMTY5LjU2OSAyLjU4ODczQzE3Mi4yNzcgMy4zMTEwNyAxNzIuNDY4IDMuNzMzNTIgMTczLjIzMSAxMC42NzZDMTczLjY4MSAxNC43NzM3IDE3My42NSAxOC4zODczIDE3My4xNTkgMTguODc3N0MxNzIuNjc3IDE5LjM1OTggMTcwLjI5IDIwLjE0NTIgMTY3Ljg1NCAyMC42MjNDMTY1LjExNiAyMS4xNjAzIDE2NC4zOCAyMS41Mzk0IDE2NS45MjYgMjEuNjE2NkMxNjcuMzAxIDIxLjY4NTMgMTY5LjAxMyAyMi4xMTM5IDE2OS43MzEgMjIuNTY5QzE3MC42MjUgMjMuMTM2MSAxNzAuOTQgMjUuMjU0NyAxNzAuNzMxIDI5LjMwMzZDMTcwLjQyNiAzNS4yMTA5IDE3MC40MjYgMzUuMjEwOSAxNjAuMTc2IDM1LjQ5NTlDMTQ5LjkyNiAzNS43ODA4IDE0OS45MjYgMzUuNzgwOCAxNDkuNzQ4IDQxLjQ5NTlDMTQ5LjY1IDQ0LjYzOTEgMTQ5LjY0IDQ4LjExMDkgMTQ5LjcyNSA0OS4yMTA5QzE0OS44MTEgNTAuMzEwOSAxNDkuNjI1IDU0LjkyMzQgMTQ5LjMxNCA1OS40NjA5QzE0OC43NDcgNjcuNzEwOSAxNDguNzQ3IDY3LjcxMDkgMTM3LjQzNyA2Ny43MTA5Wk0zMzIuNDk1IDY2LjY0MDRDMzMwLjI1NyA2Ni42MDE2IDMyNi44MjcgNjUuOTgwNyAzMjQuODcyIDY1LjI2MDRDMzIyLjkxNiA2NC41NDAxIDMxOS4zMyA2Mi45MzczIDMxNi45MDIgNjEuNjk4NkMzMTQuNDc0IDYwLjQ1OTkgMzExLjE5MiA1OC40OTM1IDMwOS42MDkgNTcuMzI4N0MzMDguMDI2IDU2LjE2MzkgMzA1LjU4NyA1My4yNjQ3IDMwNC4xOSA1MC44ODYxQzMwMi4zODcgNDcuODE4NyAzMDEuNTE0IDQ0LjYyMDQgMzAxLjE4NSAzOS44ODYxQzMwMC44MDcgMzQuNDMxNCAzMDEuMTgxIDMxLjk5OTggMzAzLjIzMiAyNi41ODc1QzMwNC42MTIgMjIuOTQ0NiAzMDYuODQ0IDE4LjIxNzEgMzA4LjE5MiAxNi4wODE5QzMwOS41NCAxMy45NDY3IDMxMi41NDMgMTAuNDgzMyAzMTQuODY1IDguMzg1MzVDMzE3LjE4NyA2LjI4NzQyIDMyMS4xODggMy42NDcxNiAzMjMuNzU3IDIuNTE4MUMzMjYuNDYxIDEuMzI5MyAzMzEuMzcyIDAuMjk1NDU1IDMzNS40MjYgMC4wNjE4MjE3QzMzOS4yNzYgLTAuMTYwMDcxIDM0NS4xMjYgMC4yMzQ1MTQgMzQ4LjQyNiAwLjkzODY3NkMzNTQuNDI2IDIuMjE4OTcgMzU0LjQyNiAyLjIxODk3IDM1NC4xOSAxMC43MDc4QzM1NC4wNiAxNS4zNzY3IDM1My43MzcgMTkuNzYyNCAzNTMuNDcxIDIwLjQ1MzhDMzUzLjEzMSAyMS4zNDExIDM1MC4xOTcgMjEuNzEwOSAzNDMuNDk3IDIxLjcxMDlDMzM0Ljk4NSAyMS43MTA5IDMzMy43OTEgMjEuOTM5OCAzMzEuOTQxIDIzLjkyNTNDMzMwLjgwNiAyNS4xNDMzIDMyOS4zNjcgMjcuODQ0NiAzMjguNzQzIDI5LjkyODNDMzI3Ljg5NCAzMi43NjIyIDMyNy44OTYgMzQuMzQ5NyAzMjguNzUyIDM2LjIyODZDMzI5LjM4MSAzNy42MSAzMzEuMDQ1IDM5LjI2MzUgMzMyLjQ0OCAzOS45MDNDMzM0LjUzIDQwLjg1MTQgMzM1LjI4OSA0MC43NzU5IDMzNi41NzIgMzkuNDkzQzMzNy40MzcgMzguNjI4MSAzMzguNTUgMzUuNzU0MyAzMzkuMDQ0IDMzLjEwNjhDMzM5LjUzOSAzMC40NTk0IDM0MC4zNDggMjcuODg4OSAzNDAuODQyIDI3LjM5NDdDMzQxLjM3MyAyNi44NjMzIDM0NC42NDQgMjcuMDE0OSAzNDguODQ1IDI3Ljc2NTlDMzUyLjc1MyAyOC40NjQyIDM1Ni41MDcgMjkuNzA2NyAzNTcuMTg4IDMwLjUyNjlDMzU3Ljk3NyAzMS40Nzc3IDM1OC40MTUgMzUuMzE1NCAzNTguMzk3IDQxLjExNDZDMzU4LjM3NiA0Ny42MzEzIDM1Ny44OTggNTEuMDgzIDM1Ni43MTEgNTMuMjg2QzM1NS44MDEgNTQuOTc3NCAzNTMuMjUzIDU3Ljk4OTUgMzUxLjA1IDU5Ljk3OTZDMzQ4LjczNSA2Mi4wNzE2IDM0NC44MzQgNjQuMjU0NiAzNDEuODA0IDY1LjE1NDRDMzM4LjkyMSA2Ni4wMTA1IDMzNC43MzIgNjYuNjc5MiAzMzIuNDk1IDY2LjY0MDRaTTQwNC4wMzMgNjQuNTU0MUMzOTcuMDEyIDY0Ljg0MDcgMzk2Ljg4NSA2NC44MDA5IDM5NS4xNjggNjEuNzg0MkMzOTMuNjYzIDU5LjE0MDQgMzkyLjg1OSA1OC43MjI3IDM4OS4yNTggNTguNzE3MkMzODYuOTY1IDU4LjcxMzcgMzg0LjM3OCA1OC45ODQgMzgzLjUwOCA1OS4zMTc5QzM4Mi42MzggNTkuNjUxNyAzODEuOTI2IDYwLjUwMzYgMzgxLjkyNiA2MS4yMTA5QzM4MS45MjYgNjEuOTE4MiAzODEuMjE0IDYyLjc3MDEgMzgwLjM0NCA2My4xMDM5QzM3OS40NzQgNjMuNDM3NyAzNzUuNzA1IDYzLjcxMDkgMzcxLjk2NyA2My43MTA5QzM2Ny41NzMgNjMuNzEwOSAzNjQuNzg2IDYzLjI0NjQgMzY0LjA4IDYyLjM5NjVDMzYzLjI5IDYxLjQ0NDEgMzYzLjM4MyA1Ni42OTMyIDM2NC40MTggNDUuMTQ2NUMzNjUuMjAzIDM2LjM4MTkgMzY2LjM0OCAyNC4wMzU5IDM2Ni45NjIgMTcuNzEwOUMzNjcuNTc1IDExLjM4NTkgMzY4LjI2MSA1LjI2MDUxIDM2OC40ODYgNC4wOTg5NUMzNjguODA5IDIuNDMyNTggMzY5Ljg3NyAxLjg1MjM5IDM3My41NSAxLjM0ODk1QzM3Ni4xMTEgMC45OTgwMTIgMzgzLjM0MSAwLjcxMDg4NSAzODkuNjE3IDAuNzEwODg1QzQwMS4wMjggMC43MTA4ODUgNDAxLjAyOCAwLjcxMDg4NyA0MDIuMzg5IDMuOTY4MDdDNDAzLjEzOCA1Ljc1OTUyIDQwNC4yNzcgMTAuMTQ3IDQwNC45MiAxMy43MTgxQzQwNS41NjQgMTcuMjg5MSA0MDcuMzgxIDI1LjY1OCA0MDguOTU5IDMyLjMxNTdDNDEwLjUzNiAzOC45NzMzIDQxMi4zOTYgNDguMzU4NCA0MTMuMDkyIDUzLjE3MTRDNDE0LjIyMSA2MC45NzU5IDQxNC4xODQgNjIuMDQ5IDQxMi43NTcgNjMuMDkyOEM0MTEuODc2IDYzLjczNjYgNDA3Ljk1MSA2NC4zOTQxIDQwNC4wMzMgNjQuNTU0MVpNNDcxLjQyNiA2My45MzQ3QzQ3MC4zMjYgNjQuMTY4OSA0NjYuMTg3IDY0LjEwMTkgNDYyLjIyOSA2My43ODU3QzQ1NS44NDQgNjMuMjc1OCA0NTQuNjUyIDYyLjg0MzYgNDUxLjY4MSA1OS45NjA5QzQ0OS44MzggNTguMTczNCA0NDguMDI2IDU2LjcxMDkgNDQ3LjY1NCA1Ni43MTA5QzQ0Ny4yODIgNTYuNzEwOSA0NDYuMjc5IDU4LjA2MDkgNDQ1LjQyNiA1OS43MTA5QzQ0My45ODggNjIuNDkyOCA0NDMuNDk1IDYyLjcwMjMgNDM4LjY1MSA2Mi41OTI2QzQzNS43NzcgNjIuNTI3NSA0MzIuMTQyIDYyLjE5IDQzMC41NzMgNjEuODQyNkM0MjguMzM2IDYxLjM0NzIgNDI3LjM1MiA2MC4yMzk1IDQyNi4wMTQgNTYuNzEwOUM0MjUuMDc3IDU0LjIzNTkgNDIwLjU5NSA0MS4zMDEzIDQxNi4wNTUgMjcuOTY3NEM0MTEuNTE1IDE0LjYzMzUgNDA4LjA4IDMuMjcwOTcgNDA4LjQyMiAyLjcxNzM5QzQwOC43NjQgMi4xNjM4MSA0MTIuMzgxIDEuNzEwODggNDE2LjQ2IDEuNzEwODhDNDIzLjY4NyAxLjcxMDg4IDQyMy45MTQgMS43ODY3NCA0MjUuNDI2IDQuNzEwODlDNDI2LjI3OSA2LjM2MDg5IDQyNy4zMDMgNy43MDgwNCA0MjcuNzAyIDcuNzA0NTZDNDI4LjEgNy43MDEwNiA0MjkuMTkzIDYuMzUxMDggNDMwLjEzIDQuNzA0NTZDNDMxLjgzMyAxLjcxMDg4IDQzMS44MzMgMS43MTA4OCA0NDQuNCAxLjcxMDg4QzQ1Ni45NjcgMS43MTA4OCA0NTYuOTY3IDEuNzEwODkgNDYwLjE5NyA2LjMyNzg5QzQ2MS45NzMgOC44NjcyNSA0NjMuOTg5IDExLjY3OTcgNDY0LjY3NyAxMi41Nzc5QzQ2NS44MjUgMTQuMDc3NCA0NjYuMDE2IDE0LjA2MjkgNDY3LjAxIDEyLjQwMDhDNDY3LjYwNiAxMS40MDUyIDQ2OS40OTEgOC45OTg4MiA0NzEuMTk5IDcuMDUzMjNDNDc0LjA2MSAzLjc5MzU5IDQ3NC42MjQgMy41NjUwMiA0NzguMzY1IDQuMTQyNjNDNDgwLjU5OSA0LjQ4NzM5IDQ4My44ODkgNS4yNDExOCA0ODUuNjc2IDUuODE3NzNDNDg4LjE3IDYuNjIyMTQgNDg4LjkyNiA3LjQzNDQxIDQ4OC45MjYgOS4zMDk1MkM0ODguOTI2IDEwLjY1MzUgNDg3Ljk3MyAxNS4yMzExIDQ4Ni44MDggMTkuNDgyQzQ4NS42NDQgMjMuNzMyOSA0ODMuNjY1IDMwLjgxMDkgNDgyLjQxMiAzNS4yMTA5QzQ4MS4xNTkgMzkuNjEwOSA0NzkuMTE2IDQ3LjE1OTcgNDc3Ljg3MiA1MS45ODU5QzQ3Ni42MjggNTYuODEyMiA0NzUuMTE5IDYxLjM3OTMgNDc0LjUxOCA2Mi4xMzVDNDczLjkxOCA2Mi44OTA3IDQ3Mi41MjYgNjMuNzAwNSA0NzEuNDI2IDYzLjkzNDdaTTQ5NS43NDIgNjQuNjk1NkM0OTEuNzE4IDY0LjY4NzIgNDg3Ljc3NCA2NC4yNjc3IDQ4Ni45NzcgNjMuNzYzNUM0ODUuNzI0IDYyLjk3MDkgNDg1LjcwMiA2MS4wNjUgNDg2LjgxNCA0OS42OTU0QzQ4Ny41MjIgNDIuNDYyMiA0ODguNzQ2IDMxLjk2OTEgNDg5LjUzNiAyNi4zNzc1QzQ5MC4zMjYgMjAuNzg1OSA0OTEuMjQ4IDEzLjQwMjYgNDkxLjU4NSA5Ljk3MDMzQzQ5MS45MjcgNi40OTU2NiA0OTIuODI1IDMuMjA5NTcgNDkzLjYxMyAyLjU1NjA0QzQ5NC40OTkgMS44MjA4MyA1MDAuNzU5IDEuMjA4MDkgNTEwLjM2OCAwLjkxNjAzMkM1MjQuNzMzIDAuNDc5NDIzIDUyNS43NDYgMC41NjkzNjEgNTI2LjI5MiAyLjMzMDMzQzUyNi42MTMgMy4zNjQ2MyA1MjguMjIzIDEyLjA4NTkgNTI5Ljg3IDIxLjcxMDlDNTMxLjUxNyAzMS4zMzU5IDUzMy41MzggNDIuODEwOSA1MzQuMzYgNDcuMjEwOUM1MzUuMTgzIDUxLjYxMDkgNTM1Ljg3MiA1Ni42NTMgNTM1Ljg5MSA1OC40MTU2QzUzNS45MjMgNjEuMzMwNSA1MzUuNTg3IDYxLjY4NjcgNTMyLjE3NiA2Mi4zNTU2QzUzMC4xMTQgNjIuNzYgNTI2LjE5NiA2My4xMTc5IDUyMy40NjkgNjMuMTUwOUM1MTguNTEyIDYzLjIxMDkgNTE4LjUxMiA2My4yMTA5IDUxNi44NDEgNTguNzEwOUM1MTUuNjU4IDU1LjUyMzggNTE0LjUzNSA1NC4xMTU1IDUxMi45OTMgNTMuODg0MUM1MTEuNzk2IDUzLjcwNDQgNTEwLjE3OCA1NC4wODcxIDUwOS4zOTggNTQuNzM0NkM1MDguNjE3IDU1LjM4MjEgNTA3LjY5IDU3LjQ1MzggNTA3LjMzNiA1OS4zMzg1QzUwNi45ODMgNjEuMjIzMSA1MDUuODc1IDYzLjIwMjkgNTA0Ljg3NiA2My43MzhDNTAzLjg3NiA2NC4yNzMxIDQ5OS43NjYgNjQuNzA0IDQ5NS43NDIgNjQuNjk1NlpNNTExLjU5MyAyMS43MTA5QzUxMi4zMjYgMjEuNzEwOSA1MTIuOTE5IDIwLjkyMzQgNTEyLjkxMSAxOS45NjA5QzUxMi45MDMgMTguOTk4NCA1MTIuNTAzIDE3LjU5MDcgNTEyLjAyMyAxNi44MzI4QzUxMS41NDMgMTYuMDc0OCA1MTAuNjUgMTUuNzYzOSA1MTAuMDM4IDE2LjE0MThDNTA5LjQyNyAxNi41MTk3IDUwOC45MjYgMTcuNjI3NCA1MDguOTI2IDE4LjYwMzJDNTA4LjkyNiAxOS41NzkxIDUwOS4yMjYgMjAuNjc3NiA1MDkuNTkzIDIxLjA0NDJDNTA5Ljk2IDIxLjQxMDkgNTEwLjg2IDIxLjcxMDkgNTExLjU5MyAyMS43MTA5WiIgZmlsbD0iI0U2N0UzQSIvPgo8L3N2Zz4K" alt="Cafe Ogawa">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">home</a></li>
+                <li><a href="#menu">menu</a></li>
+                <li><a href="#about">about</a></li>
+                <li><a href="#reviews">reviews</a></li>
+                <li><a href="#visit">visit</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="decorative-swirl" style="width: 200px; height: 200px; top: 5%; left: 5%;">
+            <img src="swirl-icon.svg" alt="">
+        </div>
+        <div class="hero-content">
+            <div class="hero-subtitle">authentic japanese ramen</div>
+            <h1 class="hero-title">Cafe Ogawa</h1>
+            <p class="hero-description">
+                Rich tonkotsu broth simmered for hours. Perfectly cooked noodles. Authentic flavours that transport you to a Tokyo neighbourhood ramen shop.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">5.0</div>
+                    <div class="stat-label">google rating</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">41</div>
+                    <div class="stat-label">reviews</div>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#menu" class="btn btn-primary">view menu</a>
+                <a href="tel:0412605813" class="btn btn-secondary">call to order</a>
+                <a href="#visit" class="btn btn-secondary">get directions</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="hero-ramen.jpg" alt="Authentic tonkotsu ramen bowl with rich broth and toppings">
+            <div class="image-overlay">
+                <p class="image-overlay-text">"Rich, deep broth, perfectly cooked noodles, and authentic flavours."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Preview -->
+    <section class="reviews-preview" id="reviews">
+        <div class="decorative-swirl" style="width: 150px; height: 150px; top: 10%; right: 5%;">
+            <img src="swirl-icon.svg" alt="">
+        </div>
+        <div class="section-header">
+            <h2 class="section-title">what people say</h2>
+            <p class="section-subtitle">41 five-star reviews on google</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"The best ramen I've had in Melbourne. The broth is incredible — you can taste the hours of work that went into it."</p>
+                <p class="review-author">— Sarah M.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Authentic, no-nonsense ramen that reminds me of small shops in Tokyo. The atmosphere is calm and the music selection is perfect."</p>
+                <p class="review-author">— James T.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Finally, a ramen place that doesn't try too hard. Just excellent food made with care. Worth the trip to Ascot Vale."</p>
+                <p class="review-author">— Michelle K.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="menu-container">
+            <div class="section-header">
+                <h2 class="section-title">menu</h2>
+            </div>
+            <div class="menu-intro">
+                <p>A focused menu of carefully crafted ramen and sides. Each bowl is made to order with attention to detail and authentic technique.</p>
+            </div>
+
+            <div class="menu-categories">
+                <!-- Ramen -->
+                <div class="menu-category">
+                    <h3>ramen</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>iekei</h4>
+                                <p class="item-description">pork belly chashu x1, nori seaweed x1, leek, spinach, chicken oil in soy sauce base pork broth</p>
+                            </div>
+                            <div class="item-price">$23.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>special iekei</h4>
+                                <p class="item-description">pork belly chashu x2, ajitama egg, nori seaweed x3, leek, spinach, chicken oil in soy sauce base pork broth</p>
+                            </div>
+                            <div class="item-price">$29.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>tonkotsu</h4>
+                                <p class="item-description">pork belly chashu x1, nori seaweed x1, spring onion in salt base pork broth</p>
+                            </div>
+                            <div class="item-price">$21.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>special tonkotsu</h4>
+                                <p class="item-description">pork belly chashu x2, ajitama egg, nori seaweed x3, spring onion in salt base pork broth</p>
+                            </div>
+                            <div class="item-price">$27.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="menu-category">
+                    <h3>options</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>extra noodles</h4>
+                            </div>
+                            <div class="item-price">$2.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>ajitama egg</h4>
+                            </div>
+                            <div class="item-price">$3</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>seaweed (3pcs)</h4>
+                            </div>
+                            <div class="item-price">$1.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>pork chashu (1pc)</h4>
+                            </div>
+                            <div class="item-price">$5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sides -->
+                <div class="menu-category">
+                    <h3>side</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>pork gyoza (6pcs)</h4>
+                            </div>
+                            <div class="item-price">$14.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>vege gyoza (6pcs)</h4>
+                            </div>
+                            <div class="item-price">$13.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>chicken karaage (6pcs)</h4>
+                            </div>
+                            <div class="item-price">$14</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>mini pork chashu on rice</h4>
+                            </div>
+                            <div class="item-price">$13.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>rice</h4>
+                                <p class="item-description">mini $2 • regular $4 • large $6</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert -->
+                <div class="menu-category">
+                    <h3>dessert</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>seasonal gelato</h4>
+                                <p class="item-description">cream cheese yuzu blueberry gelato • mikan coconut sorbet</p>
+                            </div>
+                            <div class="item-price">$6.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>chiffon cake</h4>
+                                <p class="item-description">+ gelato $3.5</p>
+                            </div>
+                            <div class="item-price">$7.5</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h4>basque cheesecake</h4>
+                            </div>
+                            <div class="item-price">$11.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drinks -->
+                <div class="menu-category">
+                    <h3>drinks</h3>
+                    
+                    <!-- Coffee + Tea -->
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--charcoal-light); text-transform: lowercase;">coffee + tea</h4>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>black coffee</h4>
+                                </div>
+                                <div class="item-price">$5</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>white coffee</h4>
+                                </div>
+                                <div class="item-price">$5</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>matcha latte</h4>
+                                </div>
+                                <div class="item-price">$6.5</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>hojicha latte</h4>
+                                </div>
+                                <div class="item-price">$6.5</div>
+                            </div>
+                            <div class="menu-item" style="border-bottom: none; padding-bottom: 0.5rem;">
+                                <div class="item-info">
+                                    <h4 style="font-size: 1rem; color: var(--charcoal-light);">options</h4>
+                                    <p class="item-description">iced +$1.5 • soy or oat milk +$1</p>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>iced sencha green tea</h4>
+                                </div>
+                                <div class="item-price">$7</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>housemade iced lemon tea</h4>
+                                </div>
+                                <div class="item-price">$7</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mocktail -->
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--charcoal-light); text-transform: lowercase;">mocktail</h4>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>peach nectar juice</h4>
+                                </div>
+                                <div class="item-price">$7.5</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>ume plum soda</h4>
+                                </div>
+                                <div class="item-price">$7.5</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>melon soda</h4>
+                                    <p class="item-description">gordon's 0.0, fresh melon, melon soda<br><em style="color: var(--orange-light);">refreshing & bright</em></p>
+                                </div>
+                                <div class="item-price">$9</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seasonal + Non-Alc -->
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--charcoal-light); text-transform: lowercase;">seasonal + non-alc</h4>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>yuzu spritz</h4>
+                                    <p class="item-description">noot spicy agave, yuzu kosho, yuzu soda<br><em style="color: var(--orange-light);">zesty & peppery</em></p>
+                                </div>
+                                <div class="item-price">$10</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>ogawa highball</h4>
+                                    <p class="item-description">noot green apple whiskey, pear ooroshi, pep pepper botanical soda<br><em style="color: var(--orange-light);">warm & effervescent</em></p>
+                                </div>
+                                <div class="item-price">$12</div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <h4>heaps normal beer</h4>
+                                    <p class="item-description">low alc beer</p>
+                                </div>
+                                <div class="item-price">$10</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--cream); border: 2px dashed var(--orange); color: var(--charcoal-light); font-size: 0.9rem;">
+                card surcharge: 1.5% / weekend surcharge: 10%
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-image">
+            <img src="about-ramen.jpg" alt="Interior of Cafe Ogawa showing cozy atmosphere">
+        </div>
+        <div class="about-content">
+            <h2>authentic ramen, melbourne heart</h2>
+            <p>
+                Cafe Ogawa isn't trying to be the loudest ramen shop in Melbourne. We're here to make honest, authentic ramen the way it's been perfected in Tokyo's neighbourhood shops for decades.
+            </p>
+            <p>
+                Our tonkotsu broth simmers for 18 hours. Our noodles are cooked to order. Every bowl is built with care, not hype.
+            </p>
+            <p>
+                The space is small, the atmosphere is warm, and there's always good music playing on vinyl. We believe the best meals happen when you slow down, listen, and savour what's in front of you.
+            </p>
+            <div class="about-highlight">
+                <p>"We don't chase trends. We perfect technique. One bowl at a time."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Section -->
+    <section class="visit-section" id="visit">
+        <div class="visit-container">
+            <div class="visit-info">
+                <h2>visit us</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h3>location</h3>
+                        <p>
+                            217 Union Rd<br>
+                            Ascot Vale VIC 3032<br>
+                            <a href="https://maps.google.com/?q=217+Union+Rd+Ascot+Vale+VIC+3032" target="_blank">get directions →</a>
+                        </p>
+                    </div>
+                    <div class="info-item">
+                        <h3>hours</h3>
+                        <ul class="hours-list">
+                            <li><span>monday – sunday</span> <span>5:00 pm – late</span></li>
+                        </ul>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--orange-light);">closed during the day. evening service only.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>contact</h3>
+                        <p>
+                            phone: <a href="tel:0412605813">0412 605 813</a><br>
+                            <br>
+                            <strong>dining options:</strong><br>
+                            dine-in • kerbside pickup • delivery
+                        </p>
+                    </div>
+                    <div class="info-item">
+                        <h3>pricing</h3>
+                        <p>$20–40 per person</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.7872364769443!2d144.91952431531787!3d-37.77419797975653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d0c3d3f3b3b%3A0x3e3f3f3f3f3f3f3f!2s217%20Union%20Rd%2C%20Ascot%20Vale%20VIC%203032!5e0!3m2!1sen!2sau!4v1234567890123!5m2!1sen!2sau"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3 style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="swirl-icon.svg" alt="" style="width: 40px; height: 40px; opacity: 0.6;">
+                    cafe ogawa
+                </h3>
+                <p>Authentic Japanese ramen in the heart of Ascot Vale. Rich broths, perfect noodles, and a warm atmosphere with carefully curated music.</p>
+            </div>
+            <div class="footer-links">
+                <h4>navigation</h4>
+                <ul>
+                    <li><a href="#home">home</a></li>
+                    <li><a href="#menu">menu</a></li>
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#reviews">reviews</a></li>
+                    <li><a href="#visit">visit us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>contact</h4>
+                <ul>
+                    <li><a href="tel:0412605813">0412 605 813</a></li>
+                    <li><a href="https://maps.google.com/?q=217+Union+Rd+Ascot+Vale+VIC+3032" target="_blank">217 union rd, ascot vale</a></li>
+                    <li>open evenings from 5pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cafe Ogawa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navItems = navLinks.querySelectorAll('a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 2px 20px rgba(42, 40, 38, 0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
