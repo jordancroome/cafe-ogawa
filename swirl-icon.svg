@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Narutomaki swirl pattern -->
+  <circle cx="50" cy="50" r="48" fill="#F5EED5"/>
+  <path d="M 50 50 C 50 50, 65 35, 75 45 C 80 50, 78 60, 70 68 C 62 76, 48 76, 40 68 C 32 60, 30 48, 38 40 C 44 34, 52 36, 55 42" 
+        fill="none"
+        stroke="#E8B4BC" 
+        stroke-width="6"
+        stroke-linecap="round"/>
+  <path d="M 55 42 C 57 38, 62 36, 67 40 C 70 43, 71 48, 68 54 C 65 60, 58 62, 52 60 C 48 58, 46 54, 48 50" 
+        fill="none"
+        stroke="#E8B4BC"
+        stroke-width="5"
+        stroke-linecap="round"/>
+</svg>
